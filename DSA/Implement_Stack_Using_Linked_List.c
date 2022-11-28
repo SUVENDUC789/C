@@ -89,6 +89,57 @@ void Traverse(Node *head)
     }
 }
 
+void stackTop(Node *head)
+{
+    if (isEmpty(head))
+    {
+        printf("Stack is Empty \n");
+    }
+    else
+    {
+        printf("Stack top element is : %d\n", head->data);
+    }
+}
+void stackBottom(Node *head)
+{
+    if (isEmpty(head))
+    {
+        printf("Stack is Empty \n");
+    }
+    else
+    {
+        Node *p = head;
+        while (p->next != NULL)
+        {
+            p = p->next;
+        }
+        printf("Stack Bottom element is : %d\n", p->data);
+    }
+}
+
+void peek(Node *head, int pos)
+{
+    if (isEmpty(head))
+    {
+        printf("Stack is empty !\n");
+    }
+    else
+    {
+        Node *p = head;
+        for (int i = 0; i < pos - 1 && p != NULL; i++)
+        {
+            p = p->next;
+        }
+        if (p != NULL)
+        {
+            printf("Peek element is : %d\n", p->data);
+        }
+        else
+        {
+            printf("Element not found\n");
+        }
+    }
+}
 int main()
 {
     Node *head = (Node *)malloc(sizeof(Node));
@@ -113,14 +164,12 @@ int main()
     head = push(head, 216);
     Traverse(head);
     head = pop(head);
-    head = pop(head);
-    head = pop(head);
-    head = pop(head);
-    head = pop(head);
-    head = pop(head);
-    head = pop(head);
-    head = pop(head);
     Traverse(head);
+    stackTop(head);
+    stackBottom(head);
+
+    peek(head,2);
+    peek(head,20);
 
     return 0;
 }
